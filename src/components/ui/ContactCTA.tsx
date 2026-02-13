@@ -46,8 +46,8 @@ export function ContactCTA({ className }: { className?: string }) {
                     className={cn(
                         "group flex flex-col items-center text-center p-8 rounded-2xl border transition-all duration-500",
                         item.accent
-                            ? "bg-brand-amber text-white border-brand-amber hover:bg-brand-amber-dark"
-                            : "bg-white text-brand-charcoal border-brand-muted hover:border-brand-amber/30 hover:shadow-lg",
+                            ? "bg-primary text-white border-primary hover:bg-primary/90"
+                            : "bg-background text-foreground border-border hover:border-primary/30 hover:shadow-lg",
                     )}
                     whileHover={{ y: -4 }}
                     whileTap={{ scale: 0.98 }}
@@ -58,7 +58,7 @@ export function ContactCTA({ className }: { className?: string }) {
                             "w-14 h-14 rounded-full flex items-center justify-center mb-5 transition-colors duration-300",
                             item.accent
                                 ? "bg-white/20 text-white"
-                                : "bg-brand-cream text-brand-amber group-hover:bg-brand-amber group-hover:text-white",
+                                : "bg-surface text-primary group-hover:bg-primary group-hover:text-white",
                         )}
                         whileHover={{ rotate: [0, -8, 8, 0] }}
                         transition={{ duration: 0.5 }}
@@ -70,7 +70,7 @@ export function ContactCTA({ className }: { className?: string }) {
                     </span>
                     <span className={cn(
                         "text-base font-medium",
-                        item.accent ? "text-white" : "text-brand-charcoal",
+                        item.accent ? "text-white" : "text-foreground",
                     )}>
                         {item.value}
                     </span>

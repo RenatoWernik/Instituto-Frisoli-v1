@@ -77,12 +77,6 @@ export function ServicesGeriatric() {
     return (
         <section className="relative overflow-hidden">
             <div className="bg-primary py-24 relative">
-                {/* Organic background blobs */}
-                <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                    <div className="absolute top-[5%] -left-[10%] w-[500px] h-[500px] rounded-full bg-white/[0.05] blur-3xl" />
-                    <div className="absolute bottom-[5%] -right-[10%] w-[600px] h-[600px] rounded-full bg-black/[0.06] blur-3xl" />
-                </div>
-
                 <div className="container px-4 md:px-6 relative z-10">
                     <div className="flex flex-col items-center text-center space-y-6 mb-16">
                         <motion.div
@@ -157,7 +151,7 @@ export function ServicesGeriatric() {
                         <Button
                             size="lg"
                             href="/especialidades"
-                            className="rounded-full px-10 h-14 bg-offwhite text-primary hover:bg-white text-base font-medium transition-all shadow-lg shadow-black/10"
+                            className="rounded-full px-10 h-14 bg-mayo-blue text-white hover:bg-mayo-blue/90 text-base font-medium transition-all shadow-lg shadow-mayo-blue/20"
                         >
                             Ver Todos os Serviços
                         </Button>

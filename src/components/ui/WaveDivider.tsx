@@ -11,9 +11,9 @@ interface WaveDividerProps {
 export function WaveDivider({ variant = "primary", flip = false, className }: WaveDividerProps) {
   const fills: Record<string, string> = {
     primary: "#BE5103",
-    white: "#F8F5F0",
+    white: "#FFFFFF",
     black: "#000000",
-    offwhite: "#F8F5F0",
+    offwhite: "#FFFFFF",
   };
 
   return (
@@ -43,9 +43,9 @@ export function WaveDivider({ variant = "primary", flip = false, className }: Wa
 export function WaveDividerSubtle({ variant = "primary", flip = false, className }: WaveDividerProps) {
   const fills: Record<string, string> = {
     primary: "#BE5103",
-    white: "#F8F5F0",
+    white: "#FFFFFF",
     black: "#000000",
-    offwhite: "#F8F5F0",
+    offwhite: "#FFFFFF",
   };
 
   return (

@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Bash(npx next build:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm install:*)",
+      "WebFetch(domain:www.mayoclinic.org)",
+      "Skill(paul:init)",
+      "Skill(paul:plan)",
+      "Skill(paul:apply)",
+      "Skill(paul:unify)",
+      "WebSearch",
+      "Bash(if not exist \"C:\\\\Users\\\\renat\\\\Desktop\\\\Instituto Frisoli\\\\.paul\\\\phases\\\\03-homepage-sections\" mkdir \"C:\\\\Users\\\\renat\\\\Desktop\\\\Instituto Frisoli\\\\.paul\\\\phases\\\\03-homepage-sections\")"
+    ]
+  }
+}

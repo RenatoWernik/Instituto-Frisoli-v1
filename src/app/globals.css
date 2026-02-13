@@ -35,8 +35,14 @@
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
 
-  /* Off-white color token */
-  --color-offwhite: #F8F5F0;
+  /* Mayo Clinic palette tokens */
+  --color-mayo-blue: hsl(var(--mayo-blue));
+  --color-surface: hsl(var(--surface));
+  --color-heading: hsl(var(--primary));
+  --color-link: hsl(var(--mayo-blue));
+
+  /* Backward-compatible alias */
+  --color-offwhite: hsl(var(--background));
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
@@ -70,46 +76,62 @@
   --font-opensauce: "Open Sauce Sans", sans-serif;
   --font-lora: "Lora", serif;
 
-  /* PALETTE: #BE5103 (Terra Cotta), #000000 (Black), #F8F5F0 (Off-White) */
-  --background: 35 30% 96%;
+  /* ══════════════════════════════════════
+     PALETA INSTITUTO FRISOLI × MAYO CLINIC
+     ══════════════════════════════════════
+     Terra Cota:  #BE5103  → Títulos, CTAs
+     Azul Mayo:   #0057B8  → Links, textos secundários
+     Branco:      #FFFFFF  → Background principal
+     Cinza Claro: #F5F5F5  → Sections alternadas
+     Preto:       #000000  → Body text, menus, footer
+     ══════════════════════════════════════ */
+
+  /* Backgrounds */
+  --background: 0 0% 100%;
   --foreground: 0 0% 0%;
+  --surface: 0 0% 96%;
 
-  --card: 35 30% 96%;
+  /* Cards & Popovers */
+  --card: 0 0% 100%;
   --card-foreground: 0 0% 0%;
-
-  --popover: 35 30% 96%;
+  --popover: 0 0% 100%;
   --popover-foreground: 0 0% 0%;
 
-  /* Primary: Terra Cotta #BE5103 */
+  /* Primary: Terra Cota #BE5103 */
   --primary: 22 95% 38%;
   --primary-foreground: 0 0% 100%;
 
-  /* Secondary: Black */
+  /* Mayo Blue: #0057B8 */
+  --mayo-blue: 211 100% 36%;
+
+  /* Secondary: Preto */
   --secondary: 0 0% 0%;
   --secondary-foreground: 0 0% 100%;
 
-  --muted: 22 20% 93%;
-  --muted-foreground: 0 0% 30%;
+  /* Muted: Cinza suave */
+  --muted: 0 0% 94%;
+  --muted-foreground: 0 0% 35%;
 
-  /* Accent: Terra Cotta light tint */
+  /* Accent: Terra Cota (reforço) */
   --accent: 22 95% 38%;
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 100% 50%;
   --destructive-foreground: 0 0% 100%;
 
-  /* UI Elements - Soft borders for organic feel */
-  --border: 22 10% 85%;
-  --input: 22 10% 85%;
+  /* UI Elements */
+  --border: 0 0% 88%;
+  --input: 0 0% 88%;
   --ring: 22 95% 38%;
 
-  /* Organic radius - FLOW OF LIFE */
-  --radius: 1.5rem;
+  /* Radius */
+  --radius: 0.75rem;
 }
 
 .dark {
   --background: 0 0% 0%;
   --foreground: 0 0% 100%;
+  --surface: 0 0% 8%;
 
   --card: 0 0% 5%;
   --card-foreground: 0 0% 100%;
@@ -119,6 +141,8 @@
 
   --primary: 22 95% 38%;
   --primary-foreground: 0 0% 100%;
+
+  --mayo-blue: 211 100% 50%;
 
   --secondary: 0 0% 100%;
   --secondary-foreground: 0 0% 0%;
@@ -146,11 +170,26 @@
     @apply bg-background text-foreground antialiased font-sans;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  /* Tipografia: headings em Terra Cota, serif */
+  h1, h2, h3 {
+    @apply font-serif font-normal tracking-tight;
+    color: hsl(var(--primary));
+  }
+
+  h4, h5, h6 {
     @apply font-serif font-normal tracking-tight;
   }
 
-  /* Smooth scrolling for organic feel */
+  /* Links em Azul Mayo */
+  a:not([class]) {
+    color: hsl(var(--mayo-blue));
+    transition: color 0.2s;
+  }
+
+  a:not([class]):hover {
+    color: hsl(var(--primary));
+  }
+
   html {
     scroll-behavior: smooth;
   }

@@ -37,7 +37,7 @@ export function TeamCard({
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 {/* Hover overlay with bio */}
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-black/90 via-brand-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
                     {bio && (
                         <p className="text-white/80 text-sm leading-relaxed">
                             {bio}
@@ -48,11 +48,11 @@ export function TeamCard({
 
             {/* Info */}
             <div>
-                <h3 className="font-serif text-xl text-brand-charcoal group-hover:text-brand-amber transition-colors duration-300">
+                <h3 className="font-serif text-xl text-foreground group-hover:text-primary transition-colors duration-300">
                     {name}
                 </h3>
-                <p className="text-brand-amber text-sm font-medium mt-1">{role}</p>
-                <p className="text-brand-gray-light text-xs mt-1">CRM {crm}</p>
+                <p className="text-primary text-sm font-medium mt-1">{role}</p>
+                <p className="text-muted-foreground text-xs mt-1">CRM {crm}</p>
             </div>
         </motion.div>
     );

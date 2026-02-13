@@ -27,8 +27,8 @@ export function ServiceCard({
             className={cn(
                 "group relative p-8 lg:p-10 rounded-2xl border transition-all duration-500 h-full flex flex-col",
                 isDark
-                    ? "bg-white/5 border-white/10 hover:border-brand-amber/40 hover:bg-white/8"
-                    : "bg-white border-brand-muted hover:border-brand-amber/30 hover:shadow-lg",
+                    ? "bg-white/5 border-white/10 hover:border-primary/40 hover:bg-white/8"
+                    : "bg-background border-border hover:border-primary/30 hover:shadow-lg",
                 className,
             )}
             whileHover={{ y: -4 }}
@@ -37,8 +37,8 @@ export function ServiceCard({
             <div className={cn(
                 "w-12 h-12 rounded-xl flex items-center justify-center mb-8 transition-colors duration-500",
                 isDark
-                    ? "bg-brand-amber/15 text-brand-amber group-hover:bg-brand-amber group-hover:text-white"
-                    : "bg-brand-cream text-brand-amber group-hover:bg-brand-amber group-hover:text-white",
+                    ? "bg-primary/15 text-primary group-hover:bg-primary group-hover:text-white"
+                    : "bg-surface text-primary group-hover:bg-primary group-hover:text-white",
             )}>
                 <Icon size={22} strokeWidth={1.5} />
             </div>
@@ -46,15 +46,15 @@ export function ServiceCard({
             <h3 className={cn(
                 "font-serif text-xl mb-4 transition-colors duration-300",
                 isDark
-                    ? "text-white group-hover:text-brand-amber"
-                    : "text-brand-charcoal group-hover:text-brand-amber",
+                    ? "text-white group-hover:text-primary"
+                    : "text-foreground group-hover:text-primary",
             )}>
                 {title}
             </h3>
 
             <p className={cn(
                 "text-sm leading-relaxed",
-                isDark ? "text-white/60" : "text-brand-gray",
+                isDark ? "text-white/60" : "text-muted-foreground",
             )}>
                 {description}
             </p>

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 interface ButtonProps {
     children: React.ReactNode;
-    variant?: "primary" | "secondary" | "ghost" | "outline";
+    variant?: "primary" | "mayo" | "secondary" | "ghost" | "outline";
     size?: "sm" | "md" | "lg" | "icon";
     href?: string;
     onClick?: () => void;
@@ -16,9 +16,10 @@ interface ButtonProps {
 
 const variantStyles = {
     primary: "bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20",
+    mayo: "bg-mayo-blue text-white hover:bg-mayo-blue/90 shadow-lg shadow-mayo-blue/20",
     secondary: "bg-black text-white hover:bg-black/90",
     ghost: "bg-transparent text-foreground hover:text-primary hover:bg-primary/5",
-    outline: "bg-transparent border-2 border-black text-black hover:border-primary hover:text-primary",
+    outline: "bg-transparent border-2 border-foreground/20 text-foreground hover:border-primary hover:text-primary hover:bg-primary/5",
 };
 
 const sizeStyles = {
@@ -51,7 +52,7 @@ export function Button({
                 target="_blank"
                 rel="noopener noreferrer"
                 className={classes}
-                whileHover={{ y: -4, boxShadow: "0 12px 24px rgba(190, 81, 3, 0.2)" }}
+                whileHover={{ y: -4, boxShadow: "0 12px 24px rgba(0,0,0,0.1)" }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
             >
@@ -72,7 +73,7 @@ export function Button({
         <motion.button
             onClick={onClick}
             className={classes}
-            whileHover={{ y: -4, boxShadow: "0 12px 24px rgba(190, 81, 3, 0.15)" }}
+            whileHover={{ y: -4, boxShadow: "0 12px 24px rgba(0,0,0,0.1)" }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
         >
