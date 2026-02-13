@@ -5,25 +5,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const NAV_LINKS = [
-    { label: "Instituto", href: "/instituto" },
-    { label: "Equipe", href: "/equipe" },
-    { label: "Especialidades", href: "/especialidades" },
-    { label: "Atendimento", href: "/atendimento" },
-    { label: "Programas", href: "/programas" },
-    { label: "Concierge", href: "/concierge" },
-    // { label: "Localização", href: "/localizacao" }, // Removed to save space on desktop, can be in footer or contact
-    { label: "Contato", href: "/contato" },
-];
+import { Button } from "@/components/ui/Button";
+import { AgendamentoModal } from "@/components/ui/AgendamentoModal";
+import { Menu, X } from "lucide-react";
 
 export function SiteHeader() {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [agendamentoOpen, setAgendamentoOpen] = useState(false);
     const pathname = usePathname();
 
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 80);
+        const onScroll = () => setScrolled(window.scrollY > 20);
         window.addEventListener("scroll", onScroll, { passive: true });
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
@@ -35,152 +28,131 @@ export function SiteHeader() {
         return () => { document.body.style.overflow = ""; };
     }, [menuOpen]);
 
+    const navLinks = [
+        { name: "Início", href: "/" },
+        { name: "Instituto", href: "/instituto" },
+        { name: "Especialidades", href: "/especialidades" },
+        { name: "Corpo Clínico", href: "/equipe" },
+        { name: "Contato", href: "/contato" },
+    ];
+
     return (
         <>
-            {/* ─── Header Bar ─── */}
             <header
                 className={cn(
-                    "fixed top-0 left-0 right-0 z-[2000] transition-all duration-300",
-                    // Scrolled: Solid White, Charcoal Text
-                    // Top: Dark Gradient, White Text
-                    scrolled && !menuOpen
-                        ? "bg-brand-light/95 backdrop-blur-md shadow-sm border-b border-brand-charcoal/5"
-                        : "bg-gradient-to-b from-black/60 to-transparent",
+                    "fixed top-0 inset-x-0 z-50 transition-all duration-500",
+                    scrolled
+                        ? "bg-offwhite/95 backdrop-blur-lg shadow-sm py-3"
+                        : "bg-transparent py-5"
                 )}
             >
-                <div className="max-w-[1400px] mx-auto flex items-center justify-between px-6 md:px-12 h-24 relative z-10">
-                    {/* 1. Logo */}
-                    {/* 1. Logo */}
-                    {/* 1. Logo: Symbol "F" + Text */}
-                    <Link href="/" className="group relative z-50 flex items-center gap-4">
-                        {/* Symbol "F" */}
-                        <div className={cn(
-                            "relative h-10 w-10 transition-all duration-300",
-                            menuOpen
-                                ? "brightness-0 invert"
-                                : scrolled
-                                    ? "" // Original (Terra Cotta) on White
-                                    : "brightness-0 invert" // Keeping white for contrast on dark hero
-                        )}>
-                            <img
-                                src="/images/logotipo1.png"
-                                alt="F"
-                                className="h-full w-full object-contain"
-                            />
-                        </div>
-
-                        {/* Text "Instituto Frisoli" */}
-                        <span
-                            className={cn(
-                                "font-serif text-xl tracking-tight transition-colors duration-300 font-medium",
-                                menuOpen
-                                    ? "text-white"
-                                    : scrolled
-                                        ? "text-brand-charcoal"
-                                        : "text-white drop-shadow-md"
-                            )}
-                        >
+                <div className="container px-4 md:px-6 flex items-center justify-between">
+                    <Link href="/" className="flex items-center gap-2 z-50 relative">
+                        <span className="text-xl md:text-2xl font-serif text-primary transition-colors">
                             Instituto Frisoli
                         </span>
                     </Link>
 
-                    {/* 2. Universal Hamburger Trigger (Visible on ALL devices) */}
+                    {/* Desktop Nav */}
+                    <nav className="hidden md:flex items-center gap-8">
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className={cn(
+                                    "text-sm font-medium transition-colors duration-300 hover:text-primary relative",
+                                    pathname === link.href
+                                        ? "text-primary"
+                                        : scrolled ? "text-black/70" : "text-black/70"
+                                )}
+                            >
+                                {link.name}
+                                {pathname === link.href && (
+                                    <motion.div
+                                        layoutId="nav-indicator"
+                                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                                    />
+                                )}
+                            </Link>
+                        ))}
+                        <Button
+                            size="sm"
+                            onClick={() => setAgendamentoOpen(true)}
+                            className="rounded-full px-6 bg-primary text-white hover:bg-primary/90 shadow-md shadow-primary/20"
+                        >
+                            Agendar
+                        </Button>
+                    </nav>
+
+                    {/* Mobile Toggle */}
                     <button
                         onClick={() => setMenuOpen(!menuOpen)}
-                        className={cn(
-                            "group transition-colors duration-300 relative z-50 p-2 flex items-center gap-3",
-                            menuOpen
-                                ? "text-white"
-                                : scrolled ? "text-brand-charcoal" : "text-white drop-shadow-md",
-                        )}
-                        aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+                        className="md:hidden z-50 relative p-2 text-black rounded-full hover:bg-primary/10 transition-colors"
+                        aria-label="Toggle Menu"
                     >
-                        <span className="text-xs uppercase tracking-[0.25em] font-medium hidden md:block">
-                            {menuOpen ? "Fechar" : "Menu"}
-                        </span>
-                        <div className="flex flex-col items-end gap-[6px]">
-                            <span className={cn("block h-[2px] bg-current transition-all duration-300", menuOpen ? "w-6 rotate-45 translate-y-[8px]" : "w-6")} />
-                            <span className={cn("block h-[2px] bg-current transition-all duration-300", menuOpen ? "opacity-0" : "w-4")} />
-                            <span className={cn("block h-[2px] bg-current transition-all duration-300", menuOpen ? "w-6 -rotate-45 -translate-y-[8px]" : "w-6")} />
-                        </div>
+                        {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                     </button>
                 </div>
             </header>
 
-            {/* ─── Full-Screen Menu Overlay (Visible on ALL devices) ─── */}
+            {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {menuOpen && (
                     <motion.div
-                        className="fixed inset-0 z-[1999] bg-brand-black flex items-center"
-                        initial={{ clipPath: "inset(0 0 100% 0)" }}
-                        animate={{ clipPath: "inset(0 0 0% 0)" }}
-                        exit={{ clipPath: "inset(0 0 100% 0)" }}
-                        transition={{ duration: 0.6, ease: [0.77, 0, 0.175, 1] }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="fixed inset-0 z-40 bg-offwhite pt-24 px-6 pb-8 md:hidden flex flex-col"
                     >
-                        <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-[1fr_1px_auto] gap-12 lg:gap-24 items-center h-full sm:h-auto overflow-y-auto sm:overflow-visible py-24 sm:py-0">
-
-                            {/* Navigation Links */}
-                            <nav className="flex flex-col gap-2">
-                                {NAV_LINKS.map((link, i) => (
-                                    <motion.div
-                                        key={link.href}
-                                        initial={{ y: 40, opacity: 0 }}
-                                        animate={{ y: 0, opacity: 1 }}
-                                        exit={{ y: -20, opacity: 0 }}
-                                        transition={{
-                                            delay: 0.2 + i * 0.05,
-                                            duration: 0.6,
-                                            ease: [0.16, 1, 0.3, 1],
-                                        }}
+                        <nav className="flex flex-col gap-2">
+                            {navLinks.map((link, i) => (
+                                <motion.div
+                                    key={link.href}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: i * 0.05 }}
+                                >
+                                    <Link
+                                        href={link.href}
+                                        className={cn(
+                                            "text-2xl font-serif font-medium py-4 block rounded-2xl px-4 transition-colors",
+                                            pathname === link.href
+                                                ? "text-primary bg-primary/5"
+                                                : "text-black hover:bg-primary/5"
+                                        )}
+                                        onClick={() => setMenuOpen(false)}
                                     >
-                                        <Link
-                                            href={link.href}
-                                            className={cn(
-                                                "block font-serif text-4xl md:text-5xl lg:text-6xl transition-colors duration-300 py-1",
-                                                pathname === link.href
-                                                    ? "text-brand-amber"
-                                                    : "text-white/40 hover:text-white",
-                                            )}
-                                        >
-                                            {link.label}
-                                        </Link>
-                                    </motion.div>
-                                ))}
-                            </nav>
-
-                            {/* Separator (Desktop) */}
-                            <div className="hidden lg:block h-80 bg-white/10" />
-
-                            {/* Contact Info */}
+                                        {link.name}
+                                    </Link>
+                                </motion.div>
+                            ))}
                             <motion.div
-                                className="flex flex-col gap-8"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.6, duration: 0.8 }}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.3 }}
+                                className="pt-6"
                             >
-                                <div>
-                                    <span className="whisper block mb-3 text-white/40">Telefone</span>
-                                    <a href="tel:+551130451234" className="text-white/80 text-lg hover:text-white transition-colors">
-                                        (11) 3045-1234
-                                    </a>
-                                </div>
-                                <div>
-                                    <span className="whisper block mb-3 text-white/40">E-mail</span>
-                                    <a href="mailto:contato@institutofrisoli.com.br" className="text-white/80 text-lg hover:text-white transition-colors">
-                                        contato@institutofrisoli.com.br
-                                    </a>
-                                </div>
-                                <div>
-                                    <span className="whisper block mb-3 text-white/40">Endereço</span>
-                                    <p className="text-white/60 text-base max-w-[200px]">
-                                        Vila Olímpia,<br />São Paulo
-                                    </p>
-                                </div>
+                                <Button
+                                    onClick={() => {
+                                        setMenuOpen(false);
+                                        setAgendamentoOpen(true);
+                                    }}
+                                    className="w-full rounded-full h-14 text-lg bg-primary text-white shadow-lg shadow-primary/25"
+                                >
+                                    Agendar Consulta
+                                </Button>
                             </motion.div>
-                        </div>
+                        </nav>
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            {/* Agendamento Modal */}
+            <AgendamentoModal
+                open={agendamentoOpen}
+                onClose={() => setAgendamentoOpen(false)}
+            />
         </>
     );
 }

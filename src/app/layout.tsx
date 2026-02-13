@@ -1,46 +1,62 @@
 import type { Metadata } from "next";
-// import localFont from "next/font/local"; // Removing missing local fonts
-// import localFont from "next/font/local"; // Removing missing local fonts
-import { Lora } from "next/font/google"; // Lora for Titles
-// Open Sauce Sans for Body/Subtitles
+
+import "@fontsource/lora/400.css";
+import "@fontsource/lora/500.css";
+import "@fontsource/lora/700.css";
+import "@fontsource/lora/400-italic.css";
+import "@fontsource/lora/500-italic.css";
+import "@fontsource/lora/700-italic.css";
+
 import "@fontsource/open-sauce-sans/300.css";
 import "@fontsource/open-sauce-sans/400.css";
 import "@fontsource/open-sauce-sans/500.css";
-import "@fontsource/open-sauce-sans/600.css";
 import "@fontsource/open-sauce-sans/700.css";
 
-import { SiteHeader } from "@/components/layout/SiteHeader"; // Importing Header
+import { SiteHeader } from "@/components/layout/SiteHeader";
 import "./globals.css";
-
-// Lora: Elegant serif for titles
-const lora = Lora({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: {
     template: "%s | Instituto Frisoli",
-    default: "Instituto Frisoli | Excelência em Geriatria e Longevidade",
+    default: "Instituto Frisoli | Clínica Geriátrica São Paulo - Excelência",
   },
-  description: "Medicina de excelência em São Paulo. Geriatria, Clínica Médica e Longevidade com abordagem integral e personalizada na Vila Olímpia.",
-  keywords: ["Geriatria", "Sāo Paulo", "Longevidade", "Clínica Médica", "Vila Olímpia", "Check-up", "Saúde do Idoso", "Roberto Frisoli"],
+  description: "Clínica geriátrica de referência em São Paulo. Equipe especializada, cuidado personalizado e abordagem multidisciplinar para longevidade com qualidade.",
+  keywords: [
+    "clínica geriátrica são paulo",
+    "geriatra são paulo",
+    "geriatria são paulo",
+    "médico geriatra",
+    "cuidados com idosos",
+    "saúde do idoso",
+    "atendimento geriátrico",
+    "clínica para idosos",
+    "medicina geriátrica",
+    "longevidade saudável",
+    "envelhecimento ativo",
+    "Instituto Frisoli",
+    "Vila Olímpia",
+    "Roberto Frisoli",
+  ],
   openGraph: {
     type: "website",
     locale: "pt_BR",
     url: "https://institutofrisoli.com.br",
     siteName: "Instituto Frisoli",
+    title: "Instituto Frisoli | Clínica Geriátrica São Paulo",
+    description: "Clínica geriátrica de referência em São Paulo. Equipe especializada, cuidado personalizado e abordagem multidisciplinar para longevidade com qualidade.",
     images: [
       {
-        url: "/images/1.jpeg", // Pointing to a valid image for OG
+        url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Instituto Frisoli",
+        alt: "Instituto Frisoli - Clínica Geriátrica em São Paulo",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Instituto Frisoli | Clínica Geriátrica São Paulo",
+    description: "Clínica geriátrica de referência em São Paulo. Equipe especializada, cuidado personalizado e abordagem multidisciplinar.",
   },
   robots: {
     index: true,
@@ -60,10 +76,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body
-        className={`${lora.variable} antialiased bg-brand-light text-brand-charcoal overflow-x-hidden selection:bg-brand-amber selection:text-white`}
-      >
-        <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.035] bg-noise mix-blend-overlay"></div>
+      <body className="antialiased font-sans bg-background text-foreground overflow-x-hidden selection:bg-primary/20 selection:text-primary">
         <SiteHeader />
         {children}
       </body>

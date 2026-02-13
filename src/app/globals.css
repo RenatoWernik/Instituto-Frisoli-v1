@@ -1,136 +1,157 @@
 @import "tailwindcss";
 
-/* ─── Design Tokens ─── */
 @theme {
-  /* Brand — Restrained */
-  --color-brand-amber: #BE5103;
-  --color-brand-amber-light: #D9691E;
-  --color-brand-amber-dark: #8F3C02;
-  --color-brand-amber-10: rgba(190, 81, 3, 0.08);
+  --font-sans: var(--font-opensauce), "Open Sauce Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif: var(--font-lora), "Lora", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 
-  /* Neutrals — Clinical & Clean */
-  --color-brand-black: #0A0A0A;
-  --color-brand-charcoal: #171717;
-  --color-brand-dark: #222222;
-  --color-brand-gray: #5A5A5A;
-  --color-brand-gray-light: #8E8E8E;
-  --color-brand-muted: #E5E5E5;
-  --color-brand-cream: #F8F8F6;
-  /* Very subtle warm gray */
-  --color-brand-light: #FFFFFF;
-  /* Pure White for clinical base */
-  --color-brand-white: #FFFFFF;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-sm: calc(var(--radius) - 8px);
 
-  /* Force Terra Cotta on interactive elements */
-  --color-accent-primary: #BE5103;
-  --color-border-accent: #BE5103;
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
 
-  /* Typography */
-  --font-serif: var(--font-serif);
-  --font-sans: var(--font-sans);
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
 
-  /* Spacing — Editorial (generous) */
-  --spacing-section: 200px;
-  --spacing-section-sm: 120px;
-  --spacing-editorial: 280px;
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
 
-  /* Animation */
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  /* Off-white color token */
+  --color-offwhite: #F8F5F0;
+
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
 
   @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-
-    to {
-      height: var(--radix-accordion-content-height);
-    }
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
   }
 
   @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-
-    to {
-      height: 0;
-    }
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
   }
 }
 
-/* ─── Custom Easing ─── */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+
+  @media (width >=--theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+
+  @media (width >=1400px) {
+    max-width: 1400px;
+  }
+}
+
 :root {
-  --font-sans: 'Open Sauce Sans', sans-serif;
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-reveal: cubic-bezier(0.77, 0, 0.175, 1);
-  --ease-editorial: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Fonts */
+  --font-opensauce: "Open Sauce Sans", sans-serif;
+  --font-lora: "Lora", serif;
+
+  /* PALETTE: #BE5103 (Terra Cotta), #000000 (Black), #F8F5F0 (Off-White) */
+  --background: 35 30% 96%;
+  --foreground: 0 0% 0%;
+
+  --card: 35 30% 96%;
+  --card-foreground: 0 0% 0%;
+
+  --popover: 35 30% 96%;
+  --popover-foreground: 0 0% 0%;
+
+  /* Primary: Terra Cotta #BE5103 */
+  --primary: 22 95% 38%;
+  --primary-foreground: 0 0% 100%;
+
+  /* Secondary: Black */
+  --secondary: 0 0% 0%;
+  --secondary-foreground: 0 0% 100%;
+
+  --muted: 22 20% 93%;
+  --muted-foreground: 0 0% 30%;
+
+  /* Accent: Terra Cotta light tint */
+  --accent: 22 95% 38%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 100% 50%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* UI Elements - Soft borders for organic feel */
+  --border: 22 10% 85%;
+  --input: 22 10% 85%;
+  --ring: 22 95% 38%;
+
+  /* Organic radius - FLOW OF LIFE */
+  --radius: 1.5rem;
 }
 
-/* ─── Base Styles ─── */
+.dark {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+
+  --card: 0 0% 5%;
+  --card-foreground: 0 0% 100%;
+
+  --popover: 0 0% 5%;
+  --popover-foreground: 0 0% 100%;
+
+  --primary: 22 95% 38%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 0 0% 100%;
+  --secondary-foreground: 0 0% 0%;
+
+  --muted: 0 0% 10%;
+  --muted-foreground: 0 0% 70%;
+
+  --accent: 22 95% 38%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 100% 50%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 22 95% 38%;
+}
+
 @layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
   body {
-    background-color: var(--color-brand-light);
-    color: var(--color-brand-charcoal);
-    font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    @apply bg-background text-foreground antialiased font-sans;
   }
 
-  /* Selection Color */
-  ::selection {
-    background-color: var(--color-brand-amber);
-    color: var(--color-brand-white);
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-normal tracking-tight;
   }
-}
 
-/* ─── Typography — Editorial ─── */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-serif);
-  line-height: 1.08;
-  letter-spacing: -0.035em;
-  font-weight: 400;
-  /* Regular weight for serif elegance */
-}
-
-h1 {
-  font-size: clamp(3rem, 7vw, 6rem);
-}
-
-h2 {
-  font-size: clamp(2.25rem, 5vw, 4rem);
-}
-
-h3 {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-}
-
-/* ─── Whisper text ─── */
-.whisper {
-  font-family: var(--font-sans);
-  font-size: 0.6875rem;
-  /* 11px */
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--color-brand-gray-light);
-  font-weight: 500;
-}
-
-/* ─── Editorial Line ─── */
-.editorial-line {
-  width: 4rem;
-  height: 1px;
-  background-color: rgba(160, 105, 58, 0.4);
-  /* brand-amber/40 */
-}
-
-/* ─── Grain Texture (Fixed) ─── */
-.bg-noise {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
+  /* Smooth scrolling for organic feel */
+  html {
+    scroll-behavior: smooth;
+  }
 }

@@ -1,54 +1,116 @@
 "use client";
 
-import { ScrollReveal } from "@/components/motion/ScrollReveal";
-import { TextReveal } from "@/components/motion/TextReveal";
+import { MapPin, Phone, Mail, Instagram, Facebook, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 export function SiteFooter() {
     return (
-        <footer className="bg-brand-black text-white/40">
-            {/* Editorial closing */}
-            <div className="max-w-[1400px] mx-auto px-8 md:px-16 pt-40 pb-20 relative">
-
-                {/* 1. Watermark Symbol */}
-                <div className="absolute top-10 right-8 md:right-16 w-32 md:w-48 opacity-[0.03] select-none pointer-events-none">
-                    <img src="/images/logotipo1.png" alt="" className="w-full h-auto" />
-                </div>
-
-                <ScrollReveal>
-                    <div className="max-w-3xl">
-                        {/* 2. Full Brand Logo (Natural Color) */}
-                        <div className="mb-12 w-48 md:w-56 opacity-90">
-                            <img src="/images/logotipo2.png" alt="Instituto Frisoli" className="w-full h-auto" />
-                        </div>
-
-                        <p className="whisper text-brand-amber/60 mb-8">Uma nota pessoal</p>
-                        <blockquote className="font-serif text-2xl md:text-3xl lg:text-4xl text-white/80 leading-[1.2] tracking-tight">
-                            <TextReveal as="span" delay={0.2}>
-                                Cuidar é um ato de coragem e gentileza. É olhar nos olhos, ouvir com atenção, e estar presente.
-                            </TextReveal>
-                        </blockquote>
-                        <p className="mt-10 text-sm text-white/30">
-                            — Dr. Alberto Frisoli
-                        </p>
-                    </div>
-                </ScrollReveal>
+        <footer className="bg-black text-white pt-20 pb-10 relative overflow-hidden">
+            {/* Organic background */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <div className="absolute top-[10%] right-[10%] w-[400px] h-[400px] rounded-full bg-primary/[0.04] blur-3xl" />
+                <div className="absolute bottom-[20%] left-[5%] w-[300px] h-[300px] rounded-full bg-white/[0.02] blur-3xl" />
             </div>
 
-            {/* Whisper contact */}
-            <div className="max-w-[1400px] mx-auto px-8 md:px-16 pb-12">
-                <div className="h-px bg-white/8 mb-12" />
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                    <div className="flex items-center gap-12">
-                        <a href="tel:+551130451234" className="whisper hover:text-white/60 transition-colors">
-                            (11) 3045-1234
-                        </a>
-                        <a href="mailto:contato@institutofrisoli.com.br" className="whisper hover:text-white/60 transition-colors">
-                            contato@institutofrisoli.com.br
-                        </a>
+            <div className="container px-4 md:px-6 relative z-10">
+                <div className="grid lg:grid-cols-4 gap-12 mb-16">
+                    {/* Brand */}
+                    <div className="space-y-6 lg:col-span-2">
+                        <Link href="/" className="inline-block group">
+                            <span className="text-3xl font-serif text-white group-hover:text-primary transition-colors duration-300">
+                                Instituto Frisoli
+                            </span>
+                        </Link>
+                        <p className="text-white/60 max-w-sm text-base leading-relaxed">
+                            Dedicados a promover a longevidade com dignidade. Referência em geriatria e
+                            cuidados integrais para idosos em São Paulo.
+                        </p>
+
+                        {/* Social Icons - Circular */}
+                        <div className="flex gap-3 pt-2">
+                            {[
+                                { icon: Instagram, label: "Instagram" },
+                                { icon: Facebook, label: "Facebook" },
+                                { icon: Linkedin, label: "LinkedIn" },
+                            ].map((social, i) => (
+                                <a
+                                    key={i}
+                                    href="#"
+                                    aria-label={social.label}
+                                    className="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary hover:scale-105 transition-all duration-300"
+                                >
+                                    <social.icon className="h-5 w-5 text-white" />
+                                </a>
+                            ))}
+                        </div>
                     </div>
-                    <p className="whisper text-white/20">
-                        © {new Date().getFullYear()} Instituto Frisoli
-                    </p>
+
+                    {/* Quick Links */}
+                    <div className="space-y-6">
+                        <h4 className="text-sm font-medium text-white/40 uppercase tracking-wider">
+                            Links Rápidos
+                        </h4>
+                        <ul className="space-y-3">
+                            {[
+                                { name: "Instituto", href: "/instituto" },
+                                { name: "Especialidades", href: "/especialidades" },
+                                { name: "Corpo Clínico", href: "/equipe" },
+                                { name: "Agendar Consulta", href: "/contato" },
+                            ].map((link, i) => (
+                                <li key={i}>
+                                    <Link
+                                        href={link.href}
+                                        className="text-white/70 hover:text-primary transition-colors duration-300 text-[15px]"
+                                    >
+                                        {link.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Contact */}
+                    <div className="space-y-6">
+                        <h4 className="text-sm font-medium text-white/40 uppercase tracking-wider">
+                            Contato
+                        </h4>
+                        <ul className="space-y-4">
+                            <li className="flex items-start gap-3 group">
+                                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <MapPin className="h-4 w-4 text-primary" />
+                                </div>
+                                <span className="text-white/70 group-hover:text-primary transition-colors text-[15px] leading-relaxed">
+                                    Rua Gomes de Carvalho, 1356
+                                    <br />Vila Olímpia, SP
+                                </span>
+                            </li>
+                            <li className="flex items-center gap-3 group">
+                                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                                    <Phone className="h-4 w-4 text-primary" />
+                                </div>
+                                <span className="text-white/70 group-hover:text-primary transition-colors text-[15px]">
+                                    (11) 3045-1234
+                                </span>
+                            </li>
+                            <li className="flex items-center gap-3 group">
+                                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                                    <Mail className="h-4 w-4 text-primary" />
+                                </div>
+                                <span className="text-white/70 group-hover:text-primary transition-colors text-[15px]">
+                                    contato@institutofrisoli.com.br
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                {/* Bottom bar */}
+                <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/40">
+                    <p>&copy; {new Date().getFullYear()} Instituto Frisoli. Todos os direitos reservados.</p>
+                    <div className="flex gap-6">
+                        <Link href="/privacidade" className="hover:text-white transition-colors">Privacidade</Link>
+                        <Link href="/termos" className="hover:text-white transition-colors">Termos de Uso</Link>
+                    </div>
                 </div>
             </div>
         </footer>
