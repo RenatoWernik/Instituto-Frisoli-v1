@@ -1,106 +1,131 @@
 "use client";
 
-import { MapPin, Phone, Mail, Instagram, Facebook, Linkedin } from "lucide-react";
 import Link from "next/link";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
 export function SiteFooter() {
-    return (
-        <footer className="bg-black text-white pt-16 pb-8">
-            <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <div className="grid lg:grid-cols-3 gap-12 mb-12">
-                    {/* Brand */}
-                    <div className="space-y-5">
-                        <Link href="/" className="inline-block">
-                            <span className="text-2xl font-serif text-white hover:text-mayo-blue transition-colors duration-200">
-                                Instituto Frisoli
-                            </span>
-                        </Link>
-                        <p className="text-white/50 max-w-xs text-sm leading-relaxed">
-                            Dedicados a promover a longevidade com dignidade. Referência em
-                            geriatria e cuidados integrais para idosos em São Paulo.
-                        </p>
+    const currentYear = new Date().getFullYear();
 
-                        {/* Social Icons */}
-                        <div className="flex gap-3 pt-1">
-                            {[
-                                { icon: Instagram, label: "Instagram" },
-                                { icon: Facebook, label: "Facebook" },
-                                { icon: Linkedin, label: "LinkedIn" },
-                            ].map((social, i) => (
-                                <a
-                                    key={i}
-                                    href="#"
-                                    aria-label={social.label}
-                                    className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-mayo-blue transition-colors duration-200"
-                                >
-                                    <social.icon className="h-4 w-4 text-white" />
-                                </a>
-                            ))}
+    return (
+        <footer className="bg-[#1a1a1a] text-white pt-16 pb-8 border-t border-white/10">
+            <div className="container mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                    {/* Brand Column */}
+                    <div className="space-y-6">
+                        <Link href="/" className="inline-block group">
+                            <div className="flex items-center gap-3">
+                                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                                    <span className="font-serif font-bold text-xl">IF</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-xl font-serif leading-none tracking-tight">
+                                        Instituto Frisoli
+                                    </span>
+                                    <span className="text-[0.65rem] uppercase tracking-widest text-white/70">
+                                        Geriatria & Longevidade
+                                    </span>
+                                </div>
+                            </div>
+                        </Link>
+                        <p className="text-white/70 text-sm leading-relaxed max-w-xs">
+                            Promovendo longevidade com qualidade de vida através de um cuidado humanizado e de excelência.
+                        </p>
+                        <div className="flex items-center gap-4">
+                            <SocialLink href="#" icon={<Instagram className="w-5 h-5" />} label="Instagram" />
+                            <SocialLink href="#" icon={<Facebook className="w-5 h-5" />} label="Facebook" />
+                            <SocialLink href="#" icon={<Linkedin className="w-5 h-5" />} label="LinkedIn" />
                         </div>
                     </div>
 
                     {/* Quick Links */}
-                    <div className="space-y-5">
-                        <h4 className="text-xs font-medium text-white/40 uppercase tracking-wider">
-                            Links
+                    <div>
+                        <h4 className="text-lg font-serif font-medium mb-6 text-white border-l-2 border-primary pl-3">
+                            Instituto
                         </h4>
                         <ul className="space-y-3">
-                            {[
-                                { name: "Instituto", href: "/instituto" },
-                                { name: "Especialidades", href: "/especialidades" },
-                                { name: "Corpo Clínico", href: "/equipe" },
-                                { name: "Agendar Consulta", href: "/contato" },
-                            ].map((link, i) => (
-                                <li key={i}>
-                                    <Link
-                                        href={link.href}
-                                        className="text-white/60 hover:text-mayo-blue transition-colors duration-200 text-sm"
-                                    >
-                                        {link.name}
-                                    </Link>
-                                </li>
-                            ))}
+                            <FooterLink href="/instituto">Sobre Nós</FooterLink>
+                            <FooterLink href="/equipe">Corpo Clínico</FooterLink>
+                            <FooterLink href="/especialidades">Especialidades</FooterLink>
+                            <FooterLink href="/contato">Fale Conosco</FooterLink>
                         </ul>
                     </div>
 
-                    {/* Contact */}
-                    <div className="space-y-5">
-                        <h4 className="text-xs font-medium text-white/40 uppercase tracking-wider">
+                    {/* Services */}
+                    <div>
+                        <h4 className="text-lg font-serif font-medium mb-6 text-white border-l-2 border-primary pl-3">
+                            Especialidades
+                        </h4>
+                        <ul className="space-y-3">
+                            <FooterLink href="/especialidades/geriatria">Geriatria</FooterLink>
+                            <FooterLink href="/especialidades/cardiologia">Cardiologia</FooterLink>
+                            <FooterLink href="/especialidades/neurologia">Neurologia</FooterLink>
+                            <FooterLink href="/especialidades/reabilitacao">Reabilitação</FooterLink>
+                        </ul>
+                    </div>
+
+                    {/* Contact Info */}
+                    <div>
+                        <h4 className="text-lg font-serif font-medium mb-6 text-white border-l-2 border-primary pl-3">
                             Contato
                         </h4>
                         <ul className="space-y-4">
-                            <li className="flex items-start gap-3">
-                                <MapPin className="h-4 w-4 text-mayo-blue flex-shrink-0 mt-0.5" />
-                                <span className="text-white/60 text-sm leading-relaxed">
-                                    Rua Gomes de Carvalho, 1356
-                                    <br />Vila Olímpia, SP
+                            <li className="flex items-start gap-3 text-white/80 text-sm">
+                                <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                                <span>
+                                    R. Gomes de Carvalho, 1356<br />
+                                    Vila Olímpia, São Paulo - SP
                                 </span>
                             </li>
-                            <li className="flex items-center gap-3">
-                                <Phone className="h-4 w-4 text-mayo-blue flex-shrink-0" />
-                                <span className="text-white/60 text-sm">
-                                    (11) 3045-1234
-                                </span>
+                            <li className="flex items-center gap-3 text-white/80 text-sm">
+                                <Phone className="w-5 h-5 text-primary shrink-0" />
+                                <span>(11) 3845-1234</span>
                             </li>
-                            <li className="flex items-center gap-3">
-                                <Mail className="h-4 w-4 text-mayo-blue flex-shrink-0" />
-                                <span className="text-white/60 text-sm">
-                                    contato@institutofrisoli.com.br
-                                </span>
+                            <li className="flex items-center gap-3 text-white/80 text-sm">
+                                <Mail className="w-5 h-5 text-primary shrink-0" />
+                                <span>contato@institutofrisoli.com.br</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                {/* Bottom bar */}
-                <div className="pt-6 mt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30">
-                    <p>&copy; {new Date().getFullYear()} Instituto Frisoli. Todos os direitos reservados.</p>
+                {/* Copyright */}
+                <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/50">
+                    <p>© {currentYear} Instituto Frisoli. Todos os direitos reservados.</p>
                     <div className="flex gap-6">
-                        <Link href="/privacidade" className="hover:text-white transition-colors">Privacidade</Link>
-                        <Link href="/termos" className="hover:text-white transition-colors">Termos de Uso</Link>
+                        <Link href="/privacidade" className="hover:text-white transition-colors">
+                            Política de Privacidade
+                        </Link>
+                        <Link href="/termos" className="hover:text-white transition-colors">
+                            Termos de Uso
+                        </Link>
                     </div>
                 </div>
             </div>
         </footer>
+    );
+}
+
+function SocialLink({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
+    return (
+        <a
+            href={href}
+            className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/70 hover:bg-primary hover:text-white transition-all duration-300"
+            aria-label={label}
+        >
+            {icon}
+        </a>
+    );
+}
+
+function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+    return (
+        <li>
+            <Link
+                href={href}
+                className="text-white/70 hover:text-white hover:translate-x-1 transition-all duration-200 inline-block text-sm"
+            >
+                {children}
+            </Link>
+        </li>
     );
 }

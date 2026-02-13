@@ -46,92 +46,70 @@ export function ContactGeriatric() {
 
     return (
         <section id="contato" className="py-24 md:py-32 bg-primary relative overflow-hidden">
-            {/* Background blobs */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div className="absolute top-[10%] -right-[10%] w-[500px] h-[500px] rounded-full bg-white/[0.05] blur-3xl" />
-                <div className="absolute bottom-[10%] -left-[5%] w-[400px] h-[400px] rounded-full bg-black/[0.06] blur-2xl" />
-            </div>
+            {/* Background pattern */}
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(#fff 1px, transparent 1px)", backgroundSize: "32px 32px" }}></div>
 
             <div className="container px-4 md:px-6 relative z-10">
-                {/* Header */}
-                <div className="text-center mb-16 space-y-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 bg-white/10 rounded-full px-5 py-2 backdrop-blur-sm"
-                    >
-                        <span className="text-sm font-medium text-white tracking-wide">
-                            Fale Conosco
-                        </span>
-                    </motion.div>
-
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="text-4xl font-serif tracking-tight sm:text-5xl text-white"
-                    >
-                        Agende Sua{" "}
-                        <span className="italic">Consulta</span>
-                    </motion.h2>
-
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="max-w-[500px] mx-auto text-white/65 text-lg leading-relaxed font-light"
-                    >
-                        Estamos aqui para ajudar. Sem compromisso, apenas uma conversa
-                        sobre como podemos cuidar de quem você ama.
-                    </motion.p>
-                </div>
-
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-                    {/* Left: Contact Info */}
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+                    {/* Left: Content */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="space-y-6"
+                        className="space-y-10"
                     >
-                        {contactInfo.map((item, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.1 + i * 0.1 }}
-                                className="flex items-start gap-5 p-5 rounded-2xl hover:bg-white/[0.06] transition-colors duration-300 group cursor-pointer"
-                            >
-                                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-offwhite group-hover:scale-105 transition-all duration-300">
-                                    <item.icon className="h-5 w-5 text-white group-hover:text-primary transition-colors" />
-                                </div>
-                                <div>
-                                    <h3 className="font-medium text-sm text-white/50 uppercase tracking-wider mb-1">
-                                        {item.label}
-                                    </h3>
-                                    {item.href ? (
-                                        <a href={item.href} className="text-lg text-white hover:text-offwhite transition-colors font-medium">
-                                            {item.value}
-                                        </a>
-                                    ) : (
-                                        <p className="text-lg text-white font-medium">{item.value}</p>
-                                    )}
-                                </div>
-                            </motion.div>
-                        ))}
-
-                        {/* Accessibility badge */}
-                        <div className="flex items-center gap-3 pt-4 pl-5">
-                            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                                <Accessibility className="h-4 w-4 text-white" />
+                        <div className="space-y-6">
+                            <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-5 py-2 backdrop-blur-sm border border-white/10">
+                                <span className="text-sm font-medium text-white tracking-wide">
+                                    Fale Conosco
+                                </span>
                             </div>
-                            <span className="text-sm text-white/50">
-                                Acesso para cadeiras de rodas &bull; Estacionamento disponível
+
+                            <h2 className="text-4xl font-serif tracking-tight sm:text-5xl md:text-6xl text-white leading-tight">
+                                Estamos prontos para <br />
+                                <span className="italic opacity-90">acolher você.</span>
+                            </h2>
+
+                            <p className="max-w-[500px] text-white/80 text-lg leading-relaxed font-light">
+                                Oferecemos um atendimento ágil e humanizado. Entre em contato para tirar dúvidas ou agendar uma avaliação.
+                            </p>
+                        </div>
+
+                        <div className="space-y-6">
+                            {contactInfo.map((item, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.1 + i * 0.1 }}
+                                    className="flex items-start gap-5 group"
+                                >
+                                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-white group-hover:text-primary transition-all duration-300 border border-white/10">
+                                        <item.icon className="h-5 w-5 text-current transition-colors" />
+                                    </div>
+                                    <div className="pt-1">
+                                        <h3 className="font-medium text-xs text-white/50 uppercase tracking-widest mb-1">
+                                            {item.label}
+                                        </h3>
+                                        {item.href ? (
+                                            <a href={item.href} className="text-xl text-white hover:text-white/80 transition-colors font-serif">
+                                                {item.value}
+                                            </a>
+                                        ) : (
+                                            <p className="text-xl text-white font-serif">{item.value}</p>
+                                        )}
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        {/* Accessibility */}
+                        <div className="flex items-center gap-3 pt-6 border-t border-white/10">
+                            <Accessibility className="h-5 w-5 text-white/60" />
+                            <span className="text-sm text-white/60">
+                                Unidade com acessibilidade total e estacionamento.
                             </span>
                         </div>
                     </motion.div>
@@ -142,87 +120,89 @@ export function ContactGeriatric() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="bg-offwhite rounded-3xl p-8 md:p-10 shadow-2xl shadow-black/20"
+                        className="bg-white rounded-3xl p-8 md:p-10 shadow-2xl shadow-black/20"
                     >
-                        <h3 className="text-2xl font-serif mb-2 text-black">
-                            Envie uma mensagem
+                        <h3 className="text-2xl font-serif mb-2 text-foreground">
+                            Agende sua Consulta
                         </h3>
-                        <p className="text-black/50 text-sm mb-8">
-                            Agende sua consulta via WhatsApp em segundos
+                        <p className="text-muted-foreground text-sm mb-8">
+                            Preencha os dados abaixo para iniciar seu atendimento via WhatsApp.
                         </p>
 
                         <form onSubmit={handleSubmit} className="space-y-5">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                <div className="space-y-2">
-                                    <label htmlFor="home-name" className="text-sm font-medium text-black/70">
-                                        Nome *
+                            <div className="space-y-4">
+                                <div>
+                                    <label htmlFor="home-name" className="text-xs font-bold text-foreground/70 uppercase tracking-wider mb-2 block">
+                                        Nome Completo
                                     </label>
                                     <input
                                         id="home-name"
                                         value={form.nome}
                                         onChange={(e) => updateField("nome", e.target.value)}
-                                        placeholder="Seu nome completo"
-                                        className="w-full h-12 px-4 bg-black/[0.04] border border-black/10 text-black placeholder:text-black/30 focus:outline-none focus:border-primary focus:bg-primary/[0.03] transition-all rounded-xl"
+                                        placeholder="Ex: João da Silva"
+                                        className="w-full h-12 px-4 bg-surface border border-border text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all rounded-lg"
                                     />
-                                    {errors.nome && <p className="text-xs text-red-500">{errors.nome}</p>}
+                                    {errors.nome && <p className="text-xs text-red-500 mt-1">{errors.nome}</p>}
                                 </div>
-                                <div className="space-y-2">
-                                    <label htmlFor="home-phone" className="text-sm font-medium text-black/70">
-                                        Telefone *
+
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label htmlFor="home-phone" className="text-xs font-bold text-foreground/70 uppercase tracking-wider mb-2 block">
+                                            Celular (com DDD)
+                                        </label>
+                                        <input
+                                            id="home-phone"
+                                            value={form.telefone}
+                                            onChange={(e) => updateField("telefone", e.target.value)}
+                                            placeholder="(11) 99999-9999"
+                                            className="w-full h-12 px-4 bg-surface border border-border text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all rounded-lg"
+                                        />
+                                        {errors.telefone && <p className="text-xs text-red-500 mt-1">{errors.telefone}</p>}
+                                    </div>
+                                    <div>
+                                        <label htmlFor="home-motivo" className="text-xs font-bold text-foreground/70 uppercase tracking-wider mb-2 block">
+                                            Motivo
+                                        </label>
+                                        <select
+                                            id="home-motivo"
+                                            value={form.motivo}
+                                            onChange={(e) => updateField("motivo", e.target.value)}
+                                            className="w-full h-12 px-4 bg-surface border border-border text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all rounded-lg appearance-none cursor-pointer"
+                                        >
+                                            <option value="">Selecione...</option>
+                                            {MOTIVO_OPTIONS.map((opt) => (
+                                                <option key={opt} value={opt}>{opt}</option>
+                                            ))}
+                                        </select>
+                                        {errors.motivo && <p className="text-xs text-red-500 mt-1">{errors.motivo}</p>}
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label htmlFor="home-message" className="text-xs font-bold text-foreground/70 uppercase tracking-wider mb-2 block">
+                                        Mensagem (Opcional)
                                     </label>
-                                    <input
-                                        id="home-phone"
-                                        value={form.telefone}
-                                        onChange={(e) => updateField("telefone", e.target.value)}
-                                        placeholder="(11) 99999-9999"
-                                        className="w-full h-12 px-4 bg-black/[0.04] border border-black/10 text-black placeholder:text-black/30 focus:outline-none focus:border-primary focus:bg-primary/[0.03] transition-all rounded-xl"
+                                    <textarea
+                                        id="home-message"
+                                        value={form.mensagem}
+                                        onChange={(e) => updateField("mensagem", e.target.value)}
+                                        rows={3}
+                                        placeholder="Olá, gostaria de saber mais sobre..."
+                                        className="w-full p-4 bg-surface border border-border text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all resize-none rounded-lg"
                                     />
-                                    {errors.telefone && <p className="text-xs text-red-500">{errors.telefone}</p>}
                                 </div>
-                            </div>
-
-                            <div className="space-y-2">
-                                <label htmlFor="home-motivo" className="text-sm font-medium text-black/70">
-                                    Motivo da Consulta *
-                                </label>
-                                <select
-                                    id="home-motivo"
-                                    value={form.motivo}
-                                    onChange={(e) => updateField("motivo", e.target.value)}
-                                    className="w-full h-12 px-4 bg-black/[0.04] border border-black/10 text-black focus:outline-none focus:border-primary focus:bg-primary/[0.03] transition-all rounded-xl appearance-none cursor-pointer"
-                                >
-                                    <option value="">Selecione o motivo...</option>
-                                    {MOTIVO_OPTIONS.map((opt) => (
-                                        <option key={opt} value={opt}>{opt}</option>
-                                    ))}
-                                </select>
-                                {errors.motivo && <p className="text-xs text-red-500">{errors.motivo}</p>}
-                            </div>
-
-                            <div className="space-y-2">
-                                <label htmlFor="home-message" className="text-sm font-medium text-black/70">
-                                    Mensagem <span className="text-black/30">(opcional)</span>
-                                </label>
-                                <textarea
-                                    id="home-message"
-                                    value={form.mensagem}
-                                    onChange={(e) => updateField("mensagem", e.target.value)}
-                                    rows={4}
-                                    placeholder="Conte-nos como podemos ajudar..."
-                                    className="w-full p-4 bg-black/[0.04] border border-black/10 text-black placeholder:text-black/30 focus:outline-none focus:border-primary focus:bg-primary/[0.03] transition-all resize-none rounded-xl"
-                                />
                             </div>
 
                             <button
                                 type="submit"
-                                className="w-full h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-medium text-base flex items-center justify-center gap-3 transition-all duration-300 shadow-lg shadow-[#25D366]/25 cursor-pointer"
+                                className="w-full h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-base flex items-center justify-center gap-3 transition-all duration-300 shadow-xl shadow-[#25D366]/20 cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
                             >
                                 <WhatsAppIcon />
-                                Enviar pelo WhatsApp
+                                Agendar no WhatsApp
                             </button>
 
-                            <p className="text-center text-xs text-black/40 pt-1">
-                                Você será redirecionado para o WhatsApp
+                            <p className="text-center text-xs text-muted-foreground/60">
+                                Ao enviar, você concorda com nossa política de privacidade.
                             </p>
                         </form>
                     </motion.div>

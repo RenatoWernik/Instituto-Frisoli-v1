@@ -11,48 +11,49 @@ import {
     Users,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { ServiceCard } from "@/components/ui/ServiceCard";
 import { motion } from "framer-motion";
 
 const services = [
     {
-        icon: ClipboardCheck,
-        title: "Avaliação Geriátrica Completa",
-        description: "Análise multidimensional da saúde do idoso que vai além dos exames tradicionais, avaliando memória, funcionalidade e riscos.",
+        iconName: "ClipboardCheck",
+        title: "Avaliação Global",
+        description: "Análise multidimensional da saúde do idoso: memória, funcionalidade, humor e nutrição.",
     },
     {
-        icon: HeartPulse,
-        title: "Gestão de Doenças Crônicas",
-        description: "Diabetes, hipertensão, artrite \u2014 controle especializado com acompanhamento contínuo e personalizado.",
+        iconName: "HeartPulse",
+        title: "Doenças Crônicas",
+        description: "Controle especializado de diabetes, hipertensão e outras condições para uma vida estável.",
     },
     {
-        icon: Brain,
-        title: "Saúde Cognitiva & Memória",
-        description: "Prevenção e tratamento de declínio cognitivo, com diagnóstico precoce de Alzheimer e outras condições.",
+        iconName: "Brain",
+        title: "Saúde da Memória",
+        description: "Prevenção e tratamento de Alzheimer e demências com foco na preservação cognitiva.",
     },
     {
-        icon: PersonStanding,
-        title: "Prevenção de Quedas & Mobilidade",
-        description: "Estratégias para fortalecer equilíbrio, força muscular e preservar a independência no dia a dia.",
+        iconName: "PersonStanding",
+        title: "Prevenção de Quedas",
+        description: "Fortalecimento muscular e equilíbrio para garantir autonomia e segurança no dia a dia.",
     },
     {
-        icon: Pill,
-        title: "Gestão de Medicamentos",
-        description: "Revisão e otimização farmacológica para garantir eficácia, segurança e evitar interações medicamentosas.",
+        iconName: "Pill",
+        title: "Desprescrição",
+        description: "Revisão criteriosa de medicamentos para evitar interações perigosas e excessos desnecessários.",
     },
     {
-        icon: Apple,
-        title: "Nutrição para Longevidade",
-        description: "Planos alimentares personalizados focados na saúde do idoso, promovendo vitalidade e bem-estar.",
+        iconName: "Apple",
+        title: "Nutrição Sénior",
+        description: "Planos alimentares que respeitam o metabolismo e as necessidades específicas do envelhecimento.",
     },
     {
-        icon: HandHeart,
-        title: "Cuidados Paliativos Coordenados",
-        description: "Conforto e dignidade em todas as fases da vida, com foco no alívio do sofrimento e qualidade de vida.",
+        iconName: "HandHeart",
+        title: "Cuidados Paliativos",
+        description: "Conforto, dignidade e alívio de sintomas em fases avançadas de doenças.",
     },
     {
-        icon: Users,
-        title: "Apoio Familiar & Cuidadores",
-        description: "Orientação prática e emocional para quem cuida, porque a saúde do idoso envolve toda a família.",
+        iconName: "Users",
+        title: "Apoio à Família",
+        description: "Treinamento e suporte emocional para cuidadores e familiares. Cuidamos de quem cuida.",
     },
 ];
 
@@ -60,103 +61,88 @@ const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
-        transition: { staggerChildren: 0.08 },
+        transition: { staggerChildren: 0.1 },
     },
 };
 
 const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.6, ease: "easeOut" as const },
+        transition: { duration: 0.5 },
     },
 };
 
 export function ServicesGeriatric() {
     return (
-        <section className="relative overflow-hidden">
-            <div className="bg-primary py-24 relative">
-                <div className="container px-4 md:px-6 relative z-10">
-                    <div className="flex flex-col items-center text-center space-y-6 mb-16">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="inline-flex items-center gap-2 bg-white/10 rounded-full px-5 py-2 backdrop-blur-sm"
-                        >
-                            <span className="text-sm font-medium text-white tracking-wide">
-                                Nossos Serviços de Geriatria
-                            </span>
-                        </motion.div>
+        <section className="py-24 bg-surface text-foreground relative overflow-hidden">
+            {/* Decorative background element */}
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
 
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            className="text-4xl font-serif tracking-tight sm:text-5xl md:text-6xl text-white"
-                        >
-                            Cuidado integral em{" "}
-                            <span className="italic">cada etapa</span>
-                        </motion.h2>
-
-                        <motion.p
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="max-w-[600px] text-white/65 text-lg leading-relaxed font-light"
-                        >
-                            Oferecemos uma abordagem completa para a saúde do idoso.
-                            Tratamento, prevenção e autonomia para cada paciente.
-                        </motion.p>
-                    </div>
-
-                    <motion.div
-                        variants={containerVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-50px" }}
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-                    >
-                        {services.map((service, index) => (
-                            <motion.div
-                                variants={itemVariants}
-                                key={index}
-                                className="group relative bg-offwhite rounded-3xl p-8 hover:shadow-xl hover:shadow-black/10 hover:-translate-y-1 transition-all duration-500"
-                            >
-                                {/* Circular icon container */}
-                                <div className="mb-6 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                                    <service.icon className="h-6 w-6 text-primary group-hover:text-white transition-colors duration-300" />
-                                </div>
-
-                                <h3 className="mb-3 text-xl font-serif text-black">
-                                    {service.title}
-                                </h3>
-                                <p className="text-black/60 leading-relaxed text-[15px]">
-                                    {service.description}
-                                </p>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-
+            <div className="container px-4 md:px-6 relative z-10">
+                <div className="flex flex-col items-center text-center space-y-8 mb-20">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
-                        className="mt-16 flex justify-center"
+                        className="inline-block"
                     >
-                        <Button
-                            size="lg"
-                            href="/especialidades"
-                            className="rounded-full px-10 h-14 bg-mayo-blue text-white hover:bg-mayo-blue/90 text-base font-medium transition-all shadow-lg shadow-mayo-blue/20"
-                        >
-                            Ver Todos os Serviços
-                        </Button>
+                        <span className="text-sm font-bold text-primary tracking-widest uppercase mb-4 block">
+                            Nossa Expertise
+                        </span>
+                        <h2 className="text-4xl md:text-5xl font-serif text-foreground">
+                            Cuidado Geriátrico <span className="text-primary italic">Integral</span>
+                        </h2>
                     </motion.div>
+
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="max-w-2xl text-lg text-muted-foreground leading-relaxed"
+                    >
+                        Nossa abordagem vai além da doença. Focamos na funcionalidade,
+                        na independência e na qualidade de vida do paciente idoso.
+                    </motion.p>
                 </div>
+
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+                >
+                    {services.map((service, index) => (
+                        <motion.div key={index} variants={itemVariants} className="h-full">
+                            <ServiceCard
+                                iconName={service.iconName}
+                                title={service.title}
+                                description={service.description}
+                                variant="light"
+                                className="h-full bg-white border-none shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
+                            />
+                        </motion.div>
+                    ))}
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 }}
+                    className="mt-20 text-center"
+                >
+                    <Button
+                        size="lg"
+                        href="/especialidades"
+                        className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 h-14 text-base shadow-lg shadow-primary/20"
+                    >
+                        Ver Todas as Especialidades
+                    </Button>
+                </motion.div>
             </div>
         </section>
     );

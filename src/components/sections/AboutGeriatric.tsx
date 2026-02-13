@@ -1,61 +1,51 @@
 "use client";
 
-import { CheckCircle2 } from "lucide-react";
+import { Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";
 
 const features = [
-    "Atendimento domiciliar especializado",
-    "Foco em desprescrição e uso racional de medicamentos",
+    "Atendimento domiciliar humanizado",
+    "Foco em desprescrição segura e efetiva",
     "Equipe multidisciplinar integrada",
-    "Acompanhamento hospitalar personalizado",
+    "Acompanhamento personalizado 24h",
 ];
 
 export function AboutGeriatric() {
     return (
-        <section className="py-24 md:py-32 bg-primary overflow-hidden relative">
-            {/* Background organic blob */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div className="absolute top-[10%] left-[50%] -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-white/[0.05] blur-3xl" />
-                <div className="absolute bottom-[5%] -right-[10%] w-[400px] h-[400px] rounded-full bg-black/[0.08] blur-3xl" />
-            </div>
+        <section className="py-24 md:py-32 bg-background overflow-hidden relative">
+            {/* Decorative Background Pattern */}
+            <div className="absolute top-0 right-0 w-1/3 h-full bg-[#f8f9fa] -z-10 rounded-l-[100px]" />
 
             <div className="container px-4 md:px-6 relative z-10">
                 <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-                    {/* Left: Circular Image Composition */}
+                    {/* Left: Image Composition */}
                     <motion.div
                         initial={{ opacity: 0, x: -40 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="relative order-2 lg:order-1 flex items-center justify-center"
+                        className="relative order-2 lg:order-1"
                     >
-                        {/* Decorative blob behind image */}
-                        <div className="absolute -top-8 -left-8 w-[110%] h-[110%] rounded-full bg-white/[0.06] blur-xl" />
-
-                        {/* Main circular image */}
-                        <div className="relative w-[320px] h-[320px] md:w-[420px] md:h-[420px] rounded-full overflow-hidden border-8 border-white/20 shadow-2xl shadow-black/20">
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/5 aspect-[4/5] lg:aspect-square">
                             <img
                                 src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=2532&auto=format&fit=crop"
-                                alt="Médico geriatra atendendo paciente idoso - clínica geriatria São Paulo"
+                                alt="Médico geriatra atendendo paciente idoso com atenção e cuidado"
                                 className="object-cover w-full h-full hover:scale-105 transition-transform duration-700"
                             />
+
+                            {/* Experience Badge */}
+                            <div className="absolute bottom-8 right-8 bg-white p-6 rounded-xl shadow-lg border border-border/50">
+                                <p className="text-4xl font-serif text-primary font-bold">15+</p>
+                                <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mt-1">
+                                    Anos de<br />Experiência
+                                </p>
+                            </div>
                         </div>
 
-                        {/* Experience Badge - Circular */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.5, duration: 0.5 }}
-                            className="absolute -bottom-4 -right-4 md:bottom-4 md:right-0 w-28 h-28 rounded-full bg-offwhite text-primary flex flex-col items-center justify-center shadow-xl shadow-black/20"
-                        >
-                            <span className="text-3xl font-serif leading-none">15+</span>
-                            <span className="text-[10px] font-medium uppercase tracking-wider mt-1">Anos</span>
-                        </motion.div>
-
-                        {/* Small decorative circle */}
-                        <div className="absolute -top-4 right-12 w-16 h-16 rounded-full border-2 border-white/15" />
+                        {/* Decorative dots grid */}
+                        <div className="absolute -z-10 -bottom-10 -left-10 w-40 h-40 opacity-20"
+                            style={{ backgroundImage: "radial-gradient(#BE5103 2px, transparent 2px)", backgroundSize: "20px 20px" }}></div>
                     </motion.div>
 
                     {/* Right: Text Content */}
@@ -67,55 +57,56 @@ export function AboutGeriatric() {
                         className="order-1 lg:order-2 space-y-8"
                     >
                         <div className="space-y-6">
-                            <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-5 py-2 backdrop-blur-sm">
-                                <span className="text-sm font-medium text-white tracking-wide">
+                            <div className="inline-flex items-center gap-2">
+                                <span className="h-px w-8 bg-primary"></span>
+                                <span className="text-sm font-bold text-primary tracking-widest uppercase">
                                     Sobre o Instituto
                                 </span>
                             </div>
 
-                            <h2 className="text-4xl font-serif tracking-tight sm:text-5xl text-white leading-tight">
-                                Experiência, Compaixão{" "}
-                                <span className="italic">e Ciência</span>
+                            <h2 className="text-4xl font-serif tracking-tight sm:text-5xl text-foreground leading-[1.2]">
+                                Experiência, Ciência e <br />
+                                <span className="italic text-primary">Compaixão Humana.</span>
                             </h2>
 
-                            <p className="text-lg text-white/75 leading-relaxed">
-                                Acreditamos que envelhecer é um privilégio, e nosso compromisso é tornar
-                                cada ano mais saudável, mais ativo e mais significativo. No Instituto Frisoli,
-                                unimos a precisão diagnóstica ao acolhimento humano.
+                            <p className="text-lg text-muted-foreground leading-relaxed">
+                                Acreditamos que envelhecer é um privilégio. No Instituto Frisoli,
+                                nosso compromisso é tornar cada ano mais saudável e significativo,
+                                unindo a precisão da medicina baseada em evidências ao acolhimento que sua família merece.
                             </p>
 
-                            <p className="text-base text-white/60 leading-relaxed">
-                                Dr. Roberto Frisoli e sua equipe oferecem um porto seguro para famílias.
-                                Investigamos as causas profundas, desenhamos planos personalizados e
-                                garantimos autonomia e respeito em cada etapa.
+                            <p className="text-base text-muted-foreground/80 leading-relaxed border-l-4 border-primary/20 pl-6">
+                                "Não tratamos apenas doenças. Cuidamos de histórias, memórias e pessoas
+                                que merecem viver com dignidade e autonomia máxima."
                             </p>
                         </div>
 
-                        <ul className="space-y-4 pt-2">
+                        <ul className="grid sm:grid-cols-2 gap-4 pt-4">
                             {features.map((item, i) => (
                                 <motion.li
                                     key={i}
-                                    initial={{ opacity: 0, x: 20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.2 + i * 0.1 }}
-                                    className="flex items-center gap-4"
+                                    className="flex items-start gap-3"
                                 >
-                                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                                        <CheckCircle2 className="h-4 w-4 text-white" />
+                                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <Check className="h-3.5 w-3.5 text-primary" />
                                     </div>
-                                    <span className="text-white/80 font-medium">{item}</span>
+                                    <span className="text-foreground/80 font-medium text-sm">{item}</span>
                                 </motion.li>
                             ))}
                         </ul>
 
-                        <div className="pt-4">
+                        <div className="pt-6">
                             <Button
                                 size="lg"
-                                href="/equipe"
-                                className="rounded-full px-10 h-14 bg-offwhite text-primary hover:bg-white shadow-lg shadow-black/15"
+                                href="/instituto"
+                                variant="outline"
+                                className="rounded-full px-10 h-14 border-2 border-primary text-primary hover:bg-primary hover:text-white text-base font-semibold transition-all"
                             >
-                                Conheça a Equipe
+                                Conheça Nossa História
                             </Button>
                         </div>
                     </motion.div>

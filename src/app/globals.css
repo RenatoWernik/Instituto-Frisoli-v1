@@ -48,13 +48,23 @@
   --animate-accordion-up: accordion-up 0.2s ease-out;
 
   @keyframes accordion-down {
-    from { height: 0; }
-    to { height: var(--radix-accordion-content-height); }
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height);
+    }
   }
 
   @keyframes accordion-up {
-    from { height: var(--radix-accordion-content-height); }
-    to { height: 0; }
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+
+    to {
+      height: 0;
+    }
   }
 }
 
@@ -78,18 +88,15 @@
 
   /* ══════════════════════════════════════
      PALETA INSTITUTO FRISOLI × MAYO CLINIC
-     ══════════════════════════════════════
-     Terra Cota:  #BE5103  → Títulos, CTAs
-     Azul Mayo:   #0057B8  → Links, textos secundários
-     Branco:      #FFFFFF  → Background principal
-     Cinza Claro: #F5F5F5  → Sections alternadas
-     Preto:       #000000  → Body text, menus, footer
      ══════════════════════════════════════ */
 
   /* Backgrounds */
   --background: 0 0% 100%;
+  /* Branco Puro */
   --foreground: 0 0% 0%;
+  /* Preto Puro */
   --surface: 0 0% 96%;
+  /* Cinza Claro F5F5F5 */
 
   /* Cards & Popovers */
   --card: 0 0% 100%;
@@ -98,67 +105,74 @@
   --popover-foreground: 0 0% 0%;
 
   /* Primary: Terra Cota #BE5103 */
-  --primary: 22 95% 38%;
+  /* HSL: 25deg 95% 38% approx */
+  --primary: 25 95% 38%;
   --primary-foreground: 0 0% 100%;
 
   /* Mayo Blue: #0057B8 */
+  /* HSL: 211deg 100% 36% approx */
   --mayo-blue: 211 100% 36%;
 
-  /* Secondary: Preto */
-  --secondary: 0 0% 0%;
+  /* Secondary: Azul Mayo para elementos secundários */
+  --secondary: 211 100% 36%;
   --secondary-foreground: 0 0% 100%;
 
-  /* Muted: Cinza suave */
-  --muted: 0 0% 94%;
-  --muted-foreground: 0 0% 35%;
+  /* Muted: Cinza neutro */
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 40%;
 
-  /* Accent: Terra Cota (reforço) */
-  --accent: 22 95% 38%;
+  /* Accent: Terra Cota */
+  --accent: 25 95% 38%;
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 100% 50%;
   --destructive-foreground: 0 0% 100%;
 
   /* UI Elements */
-  --border: 0 0% 88%;
-  --input: 0 0% 88%;
-  --ring: 22 95% 38%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 25 95% 38%;
+  /* Ring cor primária */
 
   /* Radius */
-  --radius: 0.75rem;
+  --radius: 0.5rem;
+  /* 8px - Mais sóbrio */
 }
 
 .dark {
-  --background: 0 0% 0%;
-  --foreground: 0 0% 100%;
-  --surface: 0 0% 8%;
+  /* Dark mode ajustado para não ser preto absoluto, mas um cinza muito escuro elegante */
+  --background: 0 0% 5%;
+  --foreground: 0 0% 98%;
+  --surface: 0 0% 10%;
 
-  --card: 0 0% 5%;
-  --card-foreground: 0 0% 100%;
+  --card: 0 0% 8%;
+  --card-foreground: 0 0% 98%;
 
-  --popover: 0 0% 5%;
-  --popover-foreground: 0 0% 100%;
+  --popover: 0 0% 8%;
+  --popover-foreground: 0 0% 98%;
 
-  --primary: 22 95% 38%;
+  --primary: 25 95% 45%;
+  /* Terra Cota ligeiramente mais brilhante */
   --primary-foreground: 0 0% 100%;
 
-  --mayo-blue: 211 100% 50%;
+  --mayo-blue: 211 100% 60%;
+  /* Azul mais claro para legibilidade */
 
-  --secondary: 0 0% 100%;
-  --secondary-foreground: 0 0% 0%;
+  --secondary: 211 100% 60%;
+  --secondary-foreground: 0 0% 100%;
 
-  --muted: 0 0% 10%;
-  --muted-foreground: 0 0% 70%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 65%;
 
-  --accent: 22 95% 38%;
+  --accent: 25 95% 45%;
   --accent-foreground: 0 0% 100%;
 
-  --destructive: 0 100% 50%;
+  --destructive: 0 100% 60%;
   --destructive-foreground: 0 0% 100%;
 
   --border: 0 0% 20%;
   --input: 0 0% 20%;
-  --ring: 22 95% 38%;
+  --ring: 25 95% 45%;
 }
 
 @layer base {
@@ -171,12 +185,16 @@
   }
 
   /* Tipografia: headings em Terra Cota, serif */
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     @apply font-serif font-normal tracking-tight;
     color: hsl(var(--primary));
   }
 
-  h4, h5, h6 {
+  h4,
+  h5,
+  h6 {
     @apply font-serif font-normal tracking-tight;
   }
 
