@@ -13,7 +13,7 @@ const features = [
 
 export function AboutGeriatric() {
     return (
-        <section className="py-24 md:py-32 bg-background overflow-hidden relative">
+        <section className="py-24 md:py-32 bg-surface overflow-hidden relative">
             {/* Decorative Background Pattern */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-[#f8f9fa] -z-10 rounded-l-[100px]" />
 
@@ -36,8 +36,8 @@ export function AboutGeriatric() {
 
                             {/* Experience Badge */}
                             <div className="absolute bottom-8 right-8 bg-white p-6 rounded-xl shadow-lg border border-border/50">
-                                <p className="text-4xl font-serif text-primary font-bold">15+</p>
-                                <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mt-1">
+                                <p className="text-4xl font-serif text-mayo-blue font-bold">15+</p>
+                                <p className="text-sm font-medium text-mayo-blue uppercase tracking-wider mt-1">
                                     Anos de<br />Experiência
                                 </p>
                             </div>
@@ -59,14 +59,14 @@ export function AboutGeriatric() {
                         <div className="space-y-6">
                             <div className="inline-flex items-center gap-2">
                                 <span className="h-px w-8 bg-primary"></span>
-                                <span className="text-sm font-bold text-primary tracking-widest uppercase">
+                                <span className="text-sm font-bold text-mayo-blue tracking-widest uppercase">
                                     Sobre o Instituto
                                 </span>
                             </div>
 
-                            <h2 className="text-4xl font-serif tracking-tight sm:text-5xl text-foreground leading-[1.2]">
+                            <h2 className="text-4xl font-serif tracking-tight sm:text-5xl text-mayo-blue leading-[1.2]">
                                 Experiência, Ciência e <br />
-                                <span className="italic text-primary">Compaixão Humana.</span>
+                                <span className="italic underline decoration-primary/40 underline-offset-8">Compaixão Humana.</span>
                             </h2>
 
                             <p className="text-lg text-muted-foreground leading-relaxed">
@@ -91,8 +91,8 @@ export function AboutGeriatric() {
                                     transition={{ delay: 0.2 + i * 0.1 }}
                                     className="flex items-start gap-3"
                                 >
-                                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <Check className="h-3.5 w-3.5 text-primary" />
+                                    <div className="w-6 h-6 rounded-full bg-mayo-blue/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <Check className="h-3.5 w-3.5 text-mayo-blue" />
                                     </div>
                                     <span className="text-foreground/80 font-medium text-sm">{item}</span>
                                 </motion.li>

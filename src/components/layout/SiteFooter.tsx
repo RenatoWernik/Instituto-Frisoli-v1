@@ -14,17 +14,15 @@ export function SiteFooter() {
                     <div className="space-y-6">
                         <Link href="/" className="inline-block group">
                             <div className="flex items-center gap-3">
-                                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                                    <span className="font-serif font-bold text-xl">IF</span>
-                                </div>
-                                <div className="flex flex-col">
-                                    <span className="text-xl font-serif leading-none tracking-tight">
-                                        Instituto Frisoli
+                                <div className="flex flex-col items-center leading-none pointer-events-none">
+                                    <span className="font-serif font-normal text-sm md:text-base text-primary uppercase tracking-widest translate-y-0.5">
+                                        Instituto
                                     </span>
-                                    <span className="text-[0.65rem] uppercase tracking-widest text-white/70">
-                                        Geriatria & Longevidade
+                                    <span className="font-serif font-bold text-3xl md:text-5xl text-primary uppercase -mt-1 tracking-wide">
+                                        Frisoli
                                     </span>
                                 </div>
+
                             </div>
                         </Link>
                         <p className="text-white/70 text-sm leading-relaxed max-w-xs">

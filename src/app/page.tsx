@@ -1,5 +1,5 @@
 import { HeroGeriatric } from "@/components/sections/HeroGeriatric";
-import { ServicesGeriatric } from "@/components/sections/ServicesGeriatric";
+import { ExpertiseRedesign } from "@/components/sections/ExpertiseRedesign";
 import { AboutGeriatric } from "@/components/sections/AboutGeriatric";
 import { DifferentiatorsGeriatric } from "@/components/sections/DifferentiatorsGeriatric";
 import { TestimonialsGeriatric } from "@/components/sections/TestimonialsGeriatric";
@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen bg-background text-foreground">
       <HeroGeriatric />
-      <ServicesGeriatric />
+      <ExpertiseRedesign />
       <AboutGeriatric />
       <DifferentiatorsGeriatric />
       <TestimonialsGeriatric />

@@ -45,9 +45,9 @@ export function ContactGeriatric() {
     };
 
     return (
-        <section id="contato" className="py-24 md:py-32 bg-primary relative overflow-hidden">
+        <section id="contato" className="py-24 md:py-32 bg-surface relative overflow-hidden">
             {/* Background pattern */}
-            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(#fff 1px, transparent 1px)", backgroundSize: "32px 32px" }}></div>
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(#1e3a8a 1px, transparent 1px)", backgroundSize: "32px 32px" }}></div>
 
             <div className="container px-4 md:px-6 relative z-10">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
@@ -60,18 +60,18 @@ export function ContactGeriatric() {
                         className="space-y-10"
                     >
                         <div className="space-y-6">
-                            <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-5 py-2 backdrop-blur-sm border border-white/10">
-                                <span className="text-sm font-medium text-white tracking-wide">
+                            <div className="inline-flex items-center gap-2 bg-mayo-blue/10 rounded-full px-5 py-2 backdrop-blur-sm border border-mayo-blue/10">
+                                <span className="text-sm font-medium text-mayo-blue tracking-wide">
                                     Fale Conosco
                                 </span>
                             </div>
 
-                            <h2 className="text-4xl font-serif tracking-tight sm:text-5xl md:text-6xl text-white leading-tight">
+                            <h2 className="text-4xl font-serif tracking-tight sm:text-5xl md:text-6xl text-mayo-blue leading-tight">
                                 Estamos prontos para <br />
                                 <span className="italic opacity-90">acolher você.</span>
                             </h2>
 
-                            <p className="max-w-[500px] text-white/80 text-lg leading-relaxed font-light">
+                            <p className="max-w-[500px] text-muted-foreground text-lg leading-relaxed font-light">
                                 Oferecemos um atendimento ágil e humanizado. Entre em contato para tirar dúvidas ou agendar uma avaliação.
                             </p>
                         </div>
@@ -86,19 +86,19 @@ export function ContactGeriatric() {
                                     transition={{ delay: 0.1 + i * 0.1 }}
                                     className="flex items-start gap-5 group"
                                 >
-                                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-white group-hover:text-primary transition-all duration-300 border border-white/10">
-                                        <item.icon className="h-5 w-5 text-current transition-colors" />
+                                    <div className="w-12 h-12 rounded-full bg-mayo-blue/10 flex items-center justify-center flex-shrink-0 group-hover:bg-mayo-blue group-hover:text-white transition-all duration-300 border border-mayo-blue/10">
+                                        <item.icon className="h-5 w-5 text-mayo-blue group-hover:text-white transition-colors" />
                                     </div>
                                     <div className="pt-1">
-                                        <h3 className="font-medium text-xs text-white/50 uppercase tracking-widest mb-1">
+                                        <h3 className="font-medium text-xs text-mayo-blue confirm uppercase tracking-widest mb-1">
                                             {item.label}
                                         </h3>
                                         {item.href ? (
-                                            <a href={item.href} className="text-xl text-white hover:text-white/80 transition-colors font-serif">
+                                            <a href={item.href} className="text-xl text-mayo-blue hover:text-mayo-blue/80 transition-colors font-serif">
                                                 {item.value}
                                             </a>
                                         ) : (
-                                            <p className="text-xl text-white font-serif">{item.value}</p>
+                                            <p className="text-xl text-mayo-blue font-serif">{item.value}</p>
                                         )}
                                     </div>
                                 </motion.div>
@@ -107,8 +107,8 @@ export function ContactGeriatric() {
 
                         {/* Accessibility */}
                         <div className="flex items-center gap-3 pt-6 border-t border-white/10">
-                            <Accessibility className="h-5 w-5 text-white/60" />
-                            <span className="text-sm text-white/60">
+                            <Accessibility className="h-5 w-5 text-mayo-blue/60" />
+                            <span className="text-sm text-mayo-blue/60">
                                 Unidade com acessibilidade total e estacionamento.
                             </span>
                         </div>

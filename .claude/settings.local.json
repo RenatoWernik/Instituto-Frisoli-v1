@@ -11,7 +11,9 @@
       "Skill(paul:apply)",
       "Skill(paul:unify)",
       "WebSearch",
-      "Bash(if not exist \"C:\\\\Users\\\\renat\\\\Desktop\\\\Instituto Frisoli\\\\.paul\\\\phases\\\\03-homepage-sections\" mkdir \"C:\\\\Users\\\\renat\\\\Desktop\\\\Instituto Frisoli\\\\.paul\\\\phases\\\\03-homepage-sections\")"
+      "Bash(if not exist \"C:\\\\Users\\\\renat\\\\Desktop\\\\Instituto Frisoli\\\\.paul\\\\phases\\\\03-homepage-sections\" mkdir \"C:\\\\Users\\\\renat\\\\Desktop\\\\Instituto Frisoli\\\\.paul\\\\phases\\\\03-homepage-sections\")",
+      "Bash(npx get-shit-done-cc@latest)",
+      "Bash(cd:*)"
     ]
   }
 }

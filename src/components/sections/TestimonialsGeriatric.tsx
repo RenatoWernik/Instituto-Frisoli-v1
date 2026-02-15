@@ -10,6 +10,7 @@ const testimonials = [
         role: "Filha de paciente",
         initials: "MH",
         rating: 5,
+        image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop"
     },
     {
         content: "Como geriatra, avalio a excelência técnica. Como filho, valorizo a humanidade no atendimento. O Instituto Frisoli entrega ambos de forma excepcional.",
@@ -17,6 +18,7 @@ const testimonials = [
         role: "Filho de paciente",
         initials: "CE",
         rating: 5,
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop"
     },
     {
         content: "Aos 78 anos, me sinto mais ativa e saudável do que há 10 anos. O acompanhamento preventivo e a gestão integrada da minha saúde foram transformadores.",
@@ -24,6 +26,7 @@ const testimonials = [
         role: "Paciente há 3 anos",
         initials: "AF",
         rating: 5,
+        image: "/images/dona.jpg"
     },
 ];
 
@@ -104,8 +107,8 @@ export function TestimonialsGeriatric() {
 
                             {/* Author */}
                             <div className="flex items-center gap-4 pt-6 border-t border-border/50">
-                                <div className="w-12 h-12 rounded-full bg-white border border-border flex items-center justify-center text-primary font-bold shadow-sm">
-                                    {testimonial.initials}
+                                <div className="w-12 h-12 rounded-full bg-white border border-border flex items-center justify-center text-primary font-bold shadow-sm overflow-hidden">
+                                    <img src={testimonial.image} alt={testimonial.author} className="w-full h-full object-cover" />
                                 </div>
                                 <div>
                                     <p className="font-serif text-foreground font-medium">{testimonial.author}</p>
